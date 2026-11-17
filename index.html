@@ -143,6 +143,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
 .spec div{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:12.5px;color:var(--mute);font-family:'IBM Plex Mono',monospace}
 .spec b{display:block;color:var(--text);font-size:14.5px;font-family:'Space Grotesk',sans-serif;margin-bottom:2px}
+.thumb{margin:-6px -6px 14px;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/8;background:#0b1118}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .4s}
+.proj:hover .thumb img{transform:scale(1.04)}
+.shots{display:grid;gap:12px;margin-top:6px}
+.shots img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+.shots figcaption{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mute);margin-top:6px}
 /* reveal */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
 .rv.in{opacity:1;transform:none}
@@ -267,7 +273,7 @@ whatsapp   <a href="https://wa.me/6581707356" target="_blank">wa.me/6581707356</
 
 <script>
 const P={
-dashboard:{k:"IIoT · Own build",t:"Factory Production Dashboard",
+dashboard:{k:"IIoT · Own build",t:"Factory Production Dashboard",img:[["dashboard-weigher.jpg","Plant Machine Telemetry: multi-head weigher page with live KPIs, machine mimic, production and OEE"],["dashboard-feeder.jpg","Auger feeder page: run tracking vs the machine's own baseline, trips and 7-day history"]],
  a:"A production dashboard I built myself that runs on a plant PC and shows live data from the factory's machines in one place.",
  s:[["Protocol","MQTT + Modbus TCP"],["Broker","Mosquitto on plant PC"],["Language","Python"],["Update","Live, every second"]],
  r:["Designed and built the dashboard server that starts automatically when the PC is switched on","Connected machines over MQTT: the weigher HMI publishes live data every second to a Mosquitto broker","Read other machines over Modbus TCP","Built a separate page for each machine with live values","Configured the network and firewall so machines on the plant network can reach the broker"],
@@ -318,13 +324,13 @@ logging:{k:"Data",t:"Machine Data Logging",
  r:["Wrote Python pyModbus scripts to read machine registers over Modbus TCP","Logged machine data to Excel automatically","Used the data for trend analysis and maintenance planning"],
  o:["Problems spotted earlier from trends","Fewer unplanned breakdowns"]}
 };
-const ORDER=[["dashboard","Factory production dashboard running on a plant PC, with live machine data over MQTT and Modbus TCP.",1],["weigher","5 kg load-cell weigher with coarse / medium / fine feeding on a Samkoon PLC+HMI.",1],["vffs","Servo bag-pulling, PID sealing and weigher dump handshake on vertical form-fill-seal machines.",0],["hffs","6–12 lane horizontal packers with servo/PLC sync within ±2% and live HMI counters.",0],["mtd","12-track filling synchronized on Delta PLCs over Modbus RTU, with tested safety interlocks.",0],["filling","Volumetric filling within ±1%, sensor rejects and servo profiles up to 120 units/min.",0],["mhw","Multi-head weigher commissioning and dump/ready handshake with packing machines.",0],["shrink","Customizing, wiring and commissioning shrink wrappers for end-of-line packing.",0],["panel","Control panels with PLC, HMI, servo and VFD wiring, schematics and safety interlocks.",0],["logging","Python pyModbus scripts logging HMI/PLC data to Excel for trends and maintenance.",0]];
+const ORDER=[["dashboard","Plant Machine Telemetry: my own dashboard for 4 machines, with live PLC data, production counts, trends and OEE over MQTT and Modbus TCP.",1],["weigher","5 kg load-cell weigher with coarse / medium / fine feeding on a Samkoon PLC+HMI.",1],["vffs","Servo bag-pulling, PID sealing and weigher dump handshake on vertical form-fill-seal machines.",0],["hffs","6–12 lane horizontal packers with servo/PLC sync within ±2% and live HMI counters.",0],["mtd","12-track filling synchronized on Delta PLCs over Modbus RTU, with tested safety interlocks.",0],["filling","Volumetric filling within ±1%, sensor rejects and servo profiles up to 120 units/min.",0],["mhw","Multi-head weigher commissioning and dump/ready handshake with packing machines.",0],["shrink","Customizing, wiring and commissioning shrink wrappers for end-of-line packing.",0],["panel","Control panels with PLC, HMI, servo and VFD wiring, schematics and safety interlocks.",0],["logging","Python pyModbus scripts logging HMI/PLC data to Excel for trends and maintenance.",0]];
 const g=document.getElementById('grid');
 ORDER.forEach(([id,d,f],i)=>{const p=P[id];const el=document.createElement('div');el.className='card proj rv'+(f?' feat':'');el.tabIndex=0;el.setAttribute('role','button');el.dataset.p=id;
-el.innerHTML='<div class="st"><span class="id">ST-'+String(i+1).padStart(2,'0')+'</span><span class="k"><span class="led'+(f?'':' i')+'"></span>'+p.k+'</span></div><h3>'+p.t+'</h3><p>'+d+'</p><span class="more">Open station →</span>';g.appendChild(el)});
+el.innerHTML=(p.img?'<div class="thumb"><img loading="lazy" src="'+p.img[0][0]+'" alt="'+p.t+' screenshot" onerror="this.parentNode.remove()"></div>':'')+'<div class="st"><span class="id">ST-'+String(i+1).padStart(2,'0')+'</span><span class="k"><span class="led'+(f?'':' i')+'"></span>'+p.k+'</span></div><h3>'+p.t+'</h3><p>'+d+'</p><span class="more">Open station →</span>';g.appendChild(el)});
 const m=document.getElementById('modal'),b=document.getElementById('mbody');
 function show(id){const p=P[id];if(!p)return;
-b.innerHTML='<div class="kind">'+p.k+'</div><h3>'+p.t+'</h3><p>'+p.a+'</p><h4>// Key specs</h4><div class="spec">'+p.s.map(x=>'<div><b>'+x[1]+'</b>'+x[0]+'</div>').join('')+'</div><h4>// My role</h4><ul>'+p.r.map(x=>'<li>'+x+'</li>').join('')+'</ul><h4>// Result</h4><ul>'+p.o.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+b.innerHTML='<div class="kind">'+p.k+'</div><h3>'+p.t+'</h3><p>'+p.a+'</p>'+(p.img?'<h4>// Screenshots</h4><div class="shots">'+p.img.map(x=>'<figure><img src="'+x[0]+'" alt="'+x[1]+'" onerror="this.parentNode.remove()"><figcaption>'+x[1]+'</figcaption></figure>').join('')+'</div>':'')+'<h4>// Key specs</h4><div class="spec">'+p.s.map(x=>'<div><b>'+x[1]+'</b>'+x[0]+'</div>').join('')+'</div><h4>// My role</h4><ul>'+p.r.map(x=>'<li>'+x+'</li>').join('')+'</ul><h4>// Result</h4><ul>'+p.o.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
 m.classList.add('open');document.body.style.overflow='hidden';m.querySelector('.close').focus();}
 function hide(){m.classList.remove('open');document.body.style.overflow='';}
 document.querySelectorAll('.proj').forEach(c=>{c.addEventListener('click',()=>show(c.dataset.p));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(c.dataset.p)}})});
