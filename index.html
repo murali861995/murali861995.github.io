@@ -58,6 +58,22 @@ h2{font-size:26px;margin-bottom:6px}
 .copied{color:var(--acc);font-size:13px;height:18px;margin-top:10px}
 footer{padding:28px 0;color:var(--mute);font-size:13px;text-align:center}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.job{grid-template-columns:1fr;gap:6px}nav .links{display:none}}
+
+.proj{cursor:pointer;transition:transform .15s,border-color .15s}
+.proj:hover,.proj:focus{transform:translateY(-3px);border-color:var(--acc);outline:none}
+.more{display:inline-block;margin-top:12px;color:var(--acc);font-size:13.5px;font-weight:600}
+.modal{position:fixed;inset:0;background:rgba(5,10,16,.78);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:20}
+.modal.open{display:flex}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;max-width:760px;width:100%;padding:30px;position:relative}
+.box h3{font-size:24px;margin:6px 0 10px}
+.box h4{color:var(--acc);font-size:13px;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 8px}
+.box p,.box li{color:var(--mute);font-size:15px}
+.box ul{padding-left:20px}
+.box li{margin-bottom:5px}
+.close{position:absolute;top:14px;right:14px;background:transparent;border:1px solid var(--line);color:var(--text);border-radius:8px;width:36px;height:36px;font-size:20px;cursor:pointer}
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.spec div{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px;color:var(--mute)}
+.spec b{display:block;color:var(--text);font-size:14px}
 </style>
 </head>
 <body>
@@ -81,13 +97,13 @@ footer{padding:28px 0;color:var(--mute);font-size:13px;text-align:center}
 <h2>Key Projects</h2>
 <p class="sub">Machines and systems I have built, programmed and commissioned.</p>
 <div class="grid">
-<div class="card hl"><div class="kind">IIoT · Own build</div><h3>Factory Production Dashboard</h3><p>Multi-machine production dashboard running on a plant PC. Machines send live data over MQTT (Mosquitto broker) and Modbus TCP for real-time monitoring of every line.</p></div>
-<div class="card hl"><div class="kind">PLC + HMI · Samkoon</div><h3>3-Speed Semi-Auto Weigher</h3><p>Load-cell based 5 kg weigher with coarse / medium / fine feeding logic and operator HMI on a Samkoon PLC+HMI combo unit, publishing live weight to the dashboard.</p></div>
-<div class="card"><div class="kind">Packaging</div><h3>VFFS + Multi-Head Weigher</h3><p>Synchronized servo bag-pulling, PID temperature sealing and dump-signal handshake timing between VFFS machine and multi-head weigher.</p></div>
-<div class="card"><div class="kind">Packaging</div><h3>HFFS Multi-Lane (6–12 lanes)</h3><p>Multi-lane servo/PLC speed synchronization within ±2% tolerance, with real-time HMI production counters.</p></div>
-<div class="card"><div class="kind">Packaging</div><h3>MTD 12-Lane Packing</h3><p>Multi-track filling synchronized with Delta PLCs over Modbus RTU; wired and tested machine safety interlocks.</p></div>
-<div class="card"><div class="kind">Filling</div><h3>Bottle Filling &amp; Capping Lines</h3><p>Volumetric filling within ±1% accuracy, sensor-based reject control and servo speed profiles up to 120 units/minute.</p></div>
-<div class="card"><div class="kind">Data</div><h3>Machine Data Logging</h3><p>Python pyModbus TCP scripts reading Wecon HMIs and PLCs, logging machine data to Excel for trend analysis and maintenance planning.</p></div>
+<div tabindex="0" role="button" data-p="dashboard" class="card proj hl"><div class="kind">IIoT · Own build</div><h3>Factory Production Dashboard</h3><p>Multi-machine production dashboard running on a plant PC. Machines send live data over MQTT (Mosquitto broker) and Modbus TCP for real-time monitoring of every line.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="weigher" class="card proj hl"><div class="kind">PLC + HMI · Samkoon</div><h3>3-Speed Semi-Auto Weigher</h3><p>Load-cell based 5 kg weigher with coarse / medium / fine feeding logic and operator HMI on a Samkoon PLC+HMI combo unit, publishing live weight to the dashboard.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="vffs" class="card proj"><div class="kind">Packaging</div><h3>VFFS + Multi-Head Weigher</h3><p>Synchronized servo bag-pulling, PID temperature sealing and dump-signal handshake timing between VFFS machine and multi-head weigher.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="hffs" class="card proj"><div class="kind">Packaging</div><h3>HFFS Multi-Lane (6–12 lanes)</h3><p>Multi-lane servo/PLC speed synchronization within ±2% tolerance, with real-time HMI production counters.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="mtd" class="card proj"><div class="kind">Packaging</div><h3>MTD 12-Lane Packing</h3><p>Multi-track filling synchronized with Delta PLCs over Modbus RTU; wired and tested machine safety interlocks.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="filling" class="card proj"><div class="kind">Filling</div><h3>Bottle Filling &amp; Capping Lines</h3><p>Volumetric filling within ±1% accuracy, sensor-based reject control and servo speed profiles up to 120 units/minute.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="logging" class="card proj"><div class="kind">Data</div><h3>Machine Data Logging</h3><p>Python pyModbus TCP scripts reading Wecon HMIs and PLCs, logging machine data to Excel for trend analysis and maintenance planning.</p><span class="more">View details →</span></div>
 </div>
 </div></section>
 
@@ -133,5 +149,53 @@ footer{padding:28px 0;color:var(--mute);font-size:13px;text-align:center}
 </div>
 </div></section>
 <footer>© 2026 Govindasamy Murali · Singapore</footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="box"><button class="close" aria-label="Close">×</button><div id="mbody"></div></div></div>
+<script>
+const P={
+dashboard:{k:"IIoT · Own build",t:"Factory Production Dashboard",
+ a:"A production dashboard I built myself that runs on a plant PC and shows live data from the factory's machines in one place.",
+ s:[["Protocol","MQTT + Modbus TCP"],["Broker","Mosquitto on plant PC"],["Language","Python"],["Update","Live, every second"]],
+ r:["Designed and built the dashboard server that starts automatically when the PC is switched on","Connected machines over MQTT: the weigher HMI publishes live data every second to a Mosquitto broker","Read other machines over Modbus TCP","Built a separate page for each machine with live values","Configured the network and firewall so machines on the plant network can reach the broker"],
+ o:["One screen to see machine status on the floor","Foundation for logging production data and spotting problems early"]},
+weigher:{k:"PLC + HMI · Samkoon",t:"3-Speed Semi-Auto Weigher (5 kg)",
+ a:"A load-cell based semi-automatic weigher that fills product to a target weight using three feeding speeds.",
+ s:[["Controller","Samkoon PLC+HMI combo"],["Capacity","5 kg"],["Feeding","Coarse / Medium / Fine"],["Data","MQTT to dashboard"]],
+ r:["Wrote the PLC logic for 3-speed feeding: fast coarse feed, then medium, then fine feed near target","Designed the operator HMI screens: target weight, speed switch points, live weight and settings","Load cell setup and calibration","Connected the weigher to my factory dashboard to publish live weight over MQTT"],
+ o:["Accurate fill weight with fast cycle time","Live weight visible on the plant dashboard"]},
+vffs:{k:"Packaging",t:"VFFS + Multi-Head Weigher",
+ a:"Vertical Form-Fill-Seal machines form a bag from film roll, fill it with product from a multi-head weigher, and seal it.",
+ s:[["Bag pulling","Servo synchronized"],["Sealing","PID temperature control"],["Interface","Weigher dump handshake"],["Work","Program + commission"]],
+ r:["Programmed the machine sequence for forming, filling and sealing","Set up and tuned the servo for synchronized bag pulling","Configured PID temperature control for the sealing jaws","Set up the dump-signal handshake timing between the VFFS and the multi-head weigher","Commissioned machines at customer sites and trained operators"],
+ o:["Stable, synchronized bagging with the weigher","Consistent seal quality"]},
+hffs:{k:"Packaging",t:"HFFS Multi-Lane (6–12 lanes)",
+ a:"Horizontal Form-Fill-Seal machines pack products running horizontally, here with 6 to 12 lanes running side by side.",
+ s:[["Lanes","6 – 12"],["Sync","Servo/PLC, ±2%"],["HMI","Live production counters"],["Work","Program + commission"]],
+ r:["Programmed multi-lane servo and PLC speed synchronization within ±2% tolerance","Built HMI screens with real-time production counters","Tuned servo speed and positioning across all lanes","Commissioned and handed over machines to customers"],
+ o:["All lanes running in sync","Operators can see output live on the HMI"]},
+mtd:{k:"Packaging",t:"MTD 12-Lane Packing",
+ a:"Multi-Track Duplex packing machines fill and pack product on many tracks at the same time.",
+ s:[["Tracks","12 lanes"],["PLC","Delta"],["Comms","Modbus RTU"],["Safety","Interlocks wired + tested"]],
+ r:["Synchronized multi-lane filling tracks using Delta PLCs","Set up Modbus RTU communication between controllers","Wired and tested the machine safety interlocks","Commissioned the machines"],
+ o:["Synchronized filling across all 12 tracks","Safe operation with tested interlocks"]},
+filling:{k:"Filling",t:"Bottle Filling & Capping Lines",
+ a:"Automatic lines that convey bottles, fill them by volume, cap them and reject faulty ones.",
+ s:[["Accuracy","±1% volumetric"],["Speed","Up to 120 units/min"],["Reject","Sensor based"],["Drives","Servo speed profiles"]],
+ r:["Developed PLC logic for volumetric filling within ±1% accuracy","Programmed sensor-based reject control","Set up servo speed profiles for up to 120 units per minute","Integrated conveying, filling and capping into one line"],
+ o:["Accurate fill volume","Faulty bottles removed automatically"]},
+logging:{k:"Data",t:"Machine Data Logging",
+ a:"Python scripts that read data from HMIs and PLCs over the network and save it for analysis.",
+ s:[["Protocol","Modbus TCP"],["Library","Python pyModbus"],["Devices","Wecon HMIs, PLCs"],["Output","Excel"]],
+ r:["Wrote Python pyModbus scripts to read machine registers over Modbus TCP","Logged machine data to Excel automatically","Used the data for trend analysis and maintenance planning"],
+ o:["Problems spotted earlier from trends","Fewer unplanned breakdowns"]}
+};
+const m=document.getElementById('modal'),b=document.getElementById('mbody');
+function show(id){const p=P[id];if(!p)return;
+b.innerHTML='<div class="kind">'+p.k+'</div><h3>'+p.t+'</h3><p>'+p.a+'</p><h4>Key specs</h4><div class="spec">'+p.s.map(x=>'<div><b>'+x[1]+'</b>'+x[0]+'</div>').join('')+'</div><h4>My role</h4><ul>'+p.r.map(x=>'<li>'+x+'</li>').join('')+'</ul><h4>Result</h4><ul>'+p.o.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+m.classList.add('open');document.body.style.overflow='hidden';}
+function hide(){m.classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.proj').forEach(c=>{c.addEventListener('click',()=>show(c.dataset.p));c.addEventListener('keydown',e=>{if(e.key==='Enter')show(c.dataset.p)})});
+m.addEventListener('click',e=>{if(e.target===m||e.target.classList.contains('close'))hide()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
+</script>
 </body>
 </html>
