@@ -103,6 +103,9 @@ footer{padding:28px 0;color:var(--mute);font-size:13px;text-align:center}
 <div tabindex="0" role="button" data-p="hffs" class="card proj"><div class="kind">Packaging</div><h3>HFFS Multi-Lane (6–12 lanes)</h3><p>Multi-lane servo/PLC speed synchronization within ±2% tolerance, with real-time HMI production counters.</p><span class="more">View details →</span></div>
 <div tabindex="0" role="button" data-p="mtd" class="card proj"><div class="kind">Packaging</div><h3>MTD 12-Lane Packing</h3><p>Multi-track filling synchronized with Delta PLCs over Modbus RTU; wired and tested machine safety interlocks.</p><span class="more">View details →</span></div>
 <div tabindex="0" role="button" data-p="filling" class="card proj"><div class="kind">Filling</div><h3>Bottle Filling &amp; Capping Lines</h3><p>Volumetric filling within ±1% accuracy, sensor-based reject control and servo speed profiles up to 120 units/minute.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="mhw" class="card proj"><div class="kind">Weighing</div><h3>Multi-Head Weigher Systems</h3><p>Commissioning and interfacing of multi-head weighers with packing machines, including dump-signal timing and feeding setup.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="shrink" class="card proj"><div class="kind">Packaging</div><h3>Shrink Wrapping Machines</h3><p>Customization, wiring and commissioning of shrink wrappers for end-of-line packing.</p><span class="more">View details →</span></div>
+<div tabindex="0" role="button" data-p="panel" class="card proj"><div class="kind">Electrical</div><h3>Control Panel Engineering</h3><p>Design, build and modification of machine control panels with PLC, HMI, servo and VFD wiring and safety interlocks.</p><span class="more">View details →</span></div>
 <div tabindex="0" role="button" data-p="logging" class="card proj"><div class="kind">Data</div><h3>Machine Data Logging</h3><p>Python pyModbus TCP scripts reading Wecon HMIs and PLCs, logging machine data to Excel for trend analysis and maintenance planning.</p><span class="more">View details →</span></div>
 </div>
 </div></section>
@@ -182,6 +185,21 @@ filling:{k:"Filling",t:"Bottle Filling & Capping Lines",
  s:[["Accuracy","±1% volumetric"],["Speed","Up to 120 units/min"],["Reject","Sensor based"],["Drives","Servo speed profiles"]],
  r:["Developed PLC logic for volumetric filling within ±1% accuracy","Programmed sensor-based reject control","Set up servo speed profiles for up to 120 units per minute","Integrated conveying, filling and capping into one line"],
  o:["Accurate fill volume","Faulty bottles removed automatically"]},
+mhw:{k:"Weighing",t:"Multi-Head Weigher Systems",
+ a:"Multi-head weighers use many small weigh buckets and pick the best combination to hit the target weight fast, then drop the product into a packing machine.",
+ s:[["Interface","Dump / ready handshake"],["Partner machine","VFFS packers"],["Work","Install + commission"],["Focus","Timing & feeding"]],
+ r:["Installed and commissioned multi-head weighers with packing machines","Set up the dump-signal and ready-signal handshake between weigher and packer","Adjusted feeding and timing so the weigher and bagger run in step","Troubleshot weighing and timing issues at customer sites"],
+ o:["Weigher and packer running together without missed dumps"]},
+shrink:{k:"Packaging",t:"Shrink Wrapping Machines",
+ a:"Shrink wrappers wrap products or bundles in film and pass them through a heat tunnel so the film shrinks tight around the pack.",
+ s:[["Stage","End-of-line packing"],["Work","Customize + commission"],["Scope","Wiring, PLC, testing"],["Sites","India client sites"]],
+ r:["Customized shrink wrapping machines to client requirements","Wired, tested and commissioned machines at client sites","Set up and adjusted PLC logic and machine settings for the client's product"],
+ o:["Machines handed over working to client specification"]},
+panel:{k:"Electrical",t:"Control Panel Engineering",
+ a:"The control panel is the brain box of a machine: PLC, HMI, drives, power and safety circuits wired together.",
+ s:[["Parts","PLC, HMI, servo, VFD"],["Docs","Schematics, I/O mapping"],["Safety","Interlocks"],["Work","Design, build, modify"]],
+ r:["Designed, built and modified industrial control panels","Drafted panel schematics and sensor I/O mapping","Selected components and did field terminations from electrical drawings","Implemented and tested safety interlocks"],
+ o:["Panels built to drawing and easy to troubleshoot"]},
 logging:{k:"Data",t:"Machine Data Logging",
  a:"Python scripts that read data from HMIs and PLCs over the network and save it for analysis.",
  s:[["Protocol","Modbus TCP"],["Library","Python pyModbus"],["Devices","Wecon HMIs, PLCs"],["Output","Excel"]],
