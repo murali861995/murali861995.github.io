@@ -161,9 +161,41 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .rv.in{opacity:1;transform:none}
 @media(max-width:900px){.hero{grid-template-columns:1fr}.links a{display:none}.stats{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* ===== Rich HMI layer ===== */
+.sysbar{background:#05080b;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);overflow:hidden}
+.sysbar .wrap{display:flex;align-items:center;gap:18px;height:28px;white-space:nowrap}
+.sysbar b{color:var(--run);font-weight:500}.sysbar .w{color:var(--warn)}
+.tick{flex:1;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.tick span{display:inline-block;padding-left:100%;animation:tick 38s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+.conv{position:relative;height:74px;margin:10px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:repeating-linear-gradient(90deg,#0d151d 0 22px,#101b25 22px 44px);background-size:44px 100%;animation:belt 1.2s linear infinite;overflow:hidden}
+@keyframes belt{to{background-position:44px 0}}
+.conv .pk{position:absolute;bottom:14px;width:46px;height:40px;border-radius:5px;background:linear-gradient(#e9b949,#c48a1c);box-shadow:0 0 0 1px #0006 inset;animation:move 9s linear infinite}
+.conv .pk:after{content:"";position:absolute;left:0;right:0;top:6px;height:5px;background:#0003}
+@keyframes move{from{left:-60px}to{left:100%}}
+.conv .eye{position:absolute;left:62%;top:0;bottom:0;width:2px;background:linear-gradient(var(--stop),transparent);opacity:.8}
+.conv .eye:before{content:"PE-01";position:absolute;top:4px;left:6px;font:10px 'IBM Plex Mono',monospace;color:var(--stop)}
+.conv .cnt{position:absolute;right:16px;top:8px;font:12px 'IBM Plex Mono',monospace;color:var(--run);background:#05080bcc;padding:2px 8px;border:1px solid var(--line);border-radius:4px}
+.sh{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,#121c26,#0d151d);border-radius:10px;padding:16px 20px!important;margin-bottom:26px!important}
+.sh:before{content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;background:repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 3px)}
+.sh:after{content:"● ● ●";position:absolute;right:14px;top:8px;font-size:8px;letter-spacing:3px;color:var(--run);opacity:.7}
+section{position:relative}
+.scr{position:absolute;width:7px;height:7px;border-radius:50%;background:radial-gradient(#5b6b7b,#2a3540);box-shadow:0 0 0 1px #000}
+.trend{margin-top:14px;border:1px solid var(--line);border-radius:8px;background:#070b10;padding:8px 10px}
+.trend .hd{display:flex;justify-content:space-between;font:11px 'IBM Plex Mono',monospace;color:var(--mute)}
+.trend svg{width:100%;height:60px;display:block}
+.foot-hmi{position:sticky;bottom:0;z-index:9;background:#05080bee;border-top:1px solid var(--line);font:11.5px 'IBM Plex Mono',monospace;color:var(--mute)}
+.foot-hmi .wrap{display:flex;gap:8px;height:34px;align-items:center;overflow-x:auto}
+.foot-hmi a{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:3px 12px;border-radius:5px;background:#101a24;white-space:nowrap}
+.foot-hmi a:hover{border-color:var(--run);color:var(--run)}
+.foot-hmi .sp{flex:1}
+@media(max-width:700px){.sysbar .hide{display:none}.conv{height:60px}}
+@media(prefers-reduced-motion:reduce){.tick span,.conv,.conv .pk{animation:none}}
 </style>
 </head>
 <body>
+<div class="sysbar"><div class="wrap"><span><b>●</b> PLC RUN</span><span class="hide"><b>●</b> MQTT OK</span><span class="hide">SCAN <b id="scan">4</b> ms</span><span class="tick"><span id="evt">10:02 Auto-weigh corrected servo pulse +0.3% · 10:04 Batch 214 complete · 10:05 Seal temp 168°C in band · 10:07 Recipe 03 loaded · 10:09 Dashboard sync OK · 10:11 Weigher calibration verified · 10:12 Line speed 42 ppm</span></span><span id="clk">--:--:--</span></div></div>
 <nav><div class="wrap">
 <div class="brand"><i>GM</i>G.MURALI</div>
 <div class="links"><a href="#projects">Projects</a><a href="#range">Machine range</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a><span class="pill"><span class="led"></span>OPEN TO WORK</span></div>
@@ -219,6 +251,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <div class="stat rv"><em>D103</em><b>30+</b><span>Custom machine projects</span></div>
 </div>
 </div></header>
+<div class="conv" aria-hidden="true"><div class="eye"></div><div class="pk" style="animation-delay:0s"></div><div class="pk" style="animation-delay:-3s"></div><div class="pk" style="animation-delay:-6s"></div><div class="cnt">COUNT <span id="pc">0</span></div></div>
 
 <section id="projects"><div class="wrap">
 <div class="sh"><div><span class="tag">// MACHINES &amp; SYSTEMS</span><h2>Stations I've built and commissioned</h2></div><p class="sub">Click any station to see what the machine does, the key specs, and exactly what my role was.</p></div>
@@ -379,6 +412,17 @@ function tick(){
 }
 if(reduce){wt.textContent='5.000';br.style.width='100%';ph.textContent='IN TOLERANCE ✓'}else setInterval(tick,90);
 setInterval(()=>{const c=document.getElementById('cur');c.style.opacity=c.style.opacity==='0'?'1':'0'},550);
+</script>
+<div class="foot-hmi"><div class="wrap"><span>F-KEYS</span><a href="#projects">F1 MACHINES</a><a href="#range">F2 RANGE</a><a href="#experience">F3 HISTORY</a><a href="#skills">F4 I/O</a><a href="#contact">F5 CONTACT</a><span class="sp"></span><a href="Govindasamy_Murali_Resume.pdf">⤓ RESUME</a></div></div>
+<script>
+(function(){
+var c=document.getElementById('clk');setInterval(function(){c.textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Singapore'})+' SGT'},1000);
+var s=document.getElementById('scan');setInterval(function(){s.textContent=3+Math.floor(Math.random()*3)},1500);
+var n=0,p=document.getElementById('pc');setInterval(function(){p.textContent=++n},3000);
+document.querySelectorAll('.sh').forEach(function(h){['top:6px;left:6px','bottom:6px;left:6px','bottom:6px;right:6px'].forEach(function(q){var e=document.createElement('i');e.className='scr';e.style.cssText=q;h.appendChild(e)})});
+var keys={F1:'#projects',F2:'#range',F3:'#experience',F4:'#skills'};
+addEventListener('keydown',function(e){if(keys[e.key]&&!e.ctrlKey){e.preventDefault();document.querySelector(keys[e.key]).scrollIntoView()}});
+})();
 </script>
 </body>
 </html>
