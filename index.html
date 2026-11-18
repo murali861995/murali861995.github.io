@@ -144,7 +144,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .spec div{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font-size:12.5px;color:var(--mute);font-family:'IBM Plex Mono',monospace}
 .spec b{display:block;color:var(--text);font-size:14.5px;font-family:'Space Grotesk',sans-serif;margin-bottom:2px}
 .thumb{margin:-6px -6px 14px;border-radius:10px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/8;background:#0b1118}
-.thumb img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .4s}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s}
 .proj:hover .thumb img{transform:scale(1.04)}
 .shots{display:grid;gap:12px;margin-top:6px}
 .shots img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
@@ -288,9 +288,9 @@ vffs:{k:"Packaging",t:"VFFS + Multi-Head Weigher",
  s:[["Bag pulling","Servo synchronized"],["Sealing","PID temperature control"],["Interface","Weigher dump handshake"],["Work","Program + commission"]],
  r:["Programmed the machine sequence for forming, filling and sealing","Set up and tuned the servo for synchronized bag pulling","Configured PID temperature control for the sealing jaws","Set up the dump-signal handshake timing between the VFFS and the multi-head weigher","Commissioned machines at customer sites and trained operators"],
  o:["Stable, synchronized bagging with the weigher","Consistent seal quality"]},
-hffs:{k:"Packaging",t:"HFFS Multi-Lane (6–12 lanes)",
+hffs:{k:"Packaging",img:[["hffs-hs190-line.jpg","HS-190-AF 4-lane HFFS line with auger feeders above each lane"],["hffs-twin-line.jpg","Twin HFFS pouch line (HS-360-AF-ACF) with auger fillers, metal detectors and heater controllers"],["hffs-4lane-build.jpg","4-lane pouch machine during build: touch HMI, 7 PID heater zones, pneumatic film path"],["hmi-lane-settings.jpg","Per-lane HMI recipe: batch cut, pulling on-time, filling on-delay and on-time for lanes 1–4"]],t:"HFFS Multi-Lane (6–12 lanes)",
  a:"Horizontal Form-Fill-Seal machines pack products running horizontally, here with 6 to 12 lanes running side by side.",
- s:[["Lanes","6 – 12"],["Sync","Servo/PLC, ±2%"],["HMI","Live production counters"],["Work","Program + commission"]],
+ s:[["Heater zones","7 PID controllers"],["Feeding","Auger fillers"],["Lane recipe","Batch cut / pulling / filling timers"],["Lanes","6 – 12"],["Sync","Servo/PLC, ±2%"],["HMI","Live production counters"],["Work","Program + commission"]],
  r:["Programmed multi-lane servo and PLC speed synchronization within ±2% tolerance","Built HMI screens with real-time production counters","Tuned servo speed and positioning across all lanes","Commissioned and handed over machines to customers"],
  o:["All lanes running in sync","Operators can see output live on the HMI"]},
 mtd:{k:"Packaging",t:"MTD 12-Lane Packing",
@@ -298,9 +298,9 @@ mtd:{k:"Packaging",t:"MTD 12-Lane Packing",
  s:[["Tracks","12 lanes"],["PLC","Delta"],["Comms","Modbus RTU"],["Safety","Interlocks wired + tested"]],
  r:["Synchronized multi-lane filling tracks using Delta PLCs","Set up Modbus RTU communication between controllers","Wired and tested the machine safety interlocks","Commissioned the machines"],
  o:["Synchronized filling across all 12 tracks","Safe operation with tested interlocks"]},
-filling:{k:"Filling",t:"Bottle Filling & Capping Lines",
+filling:{k:"Filling",img:[["capping-jars.jpg","Twin pneumatic capping heads on a jar line"]],t:"Bottle Filling & Capping Lines",
  a:"Automatic lines that convey bottles, fill them by volume, cap them and reject faulty ones.",
- s:[["Accuracy","±1% volumetric"],["Speed","Up to 120 units/min"],["Reject","Sensor based"],["Drives","Servo speed profiles"]],
+ s:[["Capping","Twin pneumatic heads"],["Accuracy","±1% volumetric"],["Speed","Up to 120 units/min"],["Reject","Sensor based"],["Drives","Servo speed profiles"]],
  r:["Developed PLC logic for volumetric filling within ±1% accuracy","Programmed sensor-based reject control","Set up servo speed profiles for up to 120 units per minute","Integrated conveying, filling and capping into one line"],
  o:["Accurate fill volume","Faulty bottles removed automatically"]},
 mhw:{k:"Weighing",t:"Multi-Head Weigher Systems",
@@ -313,18 +313,23 @@ shrink:{k:"Packaging",t:"Shrink Wrapping Machines",
  s:[["Stage","End-of-line packing"],["Work","Customize + commission"],["Scope","Wiring, PLC, testing"],["Sites","India client sites"]],
  r:["Customized shrink wrapping machines to client requirements","Wired, tested and commissioned machines at client sites","Set up and adjusted PLC logic and machine settings for the client's product"],
  o:["Machines handed over working to client specification"]},
-panel:{k:"Electrical",t:"Control Panel Engineering",
+panel:{k:"Electrical",img:[["panel-dvp-ssr.jpg","Delta DVP-14SS2 PLC, 8-ch relay boards, 40 A SSRs for heater zones, MCB distribution"],["panel-dvp-smps.jpg","DVP PLC with relay outputs, 24 V SMPS and labelled SSRs (VERTICAL / H FRONT / H BACK)"],["panel-delta-servo.jpg","Packing machine panel: Delta ASDA servo drive, relay boards, 7 SSRs, ferrule-numbered terminals"],["panel-dvp-ferrules.jpg","PLC I/O wired to terminal rail with ferrule numbers 101–171 matching the HMI I/O map"],["panel-omron-cp1e.jpg","Omron CP1E PLC panel with interposing relays and terminal blocks"],["panel-omron-relays.jpg","Relay and temperature-controller section, numbered ferrules on every wire"]],t:"Control Panel Engineering",
  a:"The control panel is the brain box of a machine: PLC, HMI, drives, power and safety circuits wired together.",
- s:[["Parts","PLC, HMI, servo, VFD"],["Docs","Schematics, I/O mapping"],["Safety","Interlocks"],["Work","Design, build, modify"]],
+ s:[["PLC","Delta DVP-14SS2, Omron CP1E"],["Heaters","40 A SSRs, PID zones"],["Wiring","Ferrule numbers ↔ HMI I/O map"],["Parts","PLC, HMI, servo, VFD"],["Docs","Schematics, I/O mapping"],["Safety","Interlocks"],["Work","Design, build, modify"]],
  r:["Designed, built and modified industrial control panels","Drafted panel schematics and sensor I/O mapping","Selected components and did field terminations from electrical drawings","Implemented and tested safety interlocks"],
  o:["Panels built to drawing and easy to troubleshoot"]},
+hmi:{k:"HMI · Delta",t:"HMI Screen Design",img:[["hmi-input-status.jpg","Delta HMI input status page: every sensor shown with its PLC input and ferrule number"],["hmi-lane1-setup.jpg","Lane timing setup screen used during commissioning"],["hmi-design-software.jpg","Designing an I/O status screen: ferrule number, PLC input and live lamp for each signal"]],
+ a:"Operator and maintenance screens for packing machines: recipes per lane, live I/O status and alarms, so faults can be found from the screen without opening the panel.",
+ s:[["HMI","Delta DOP touch panels"],["Pages","Home, recipe, I/O status, alarms"],["I/O map","Sensor → PLC input → ferrule"],["Use","Faster troubleshooting"]],
+ r:["Designed HMI screens for multi-lane packing machines","Built I/O status pages that show each sensor with its PLC input address and wire ferrule number","Created per-lane recipe screens for batch cut, pulling and filling timers","Linked HMI tags to PLC registers and tested every signal during commissioning"],
+ o:["Technicians find a faulty sensor from the HMI in minutes","Operators change lane settings without a laptop"]},
 logging:{k:"Data",t:"Machine Data Logging",
  a:"Python scripts that read data from HMIs and PLCs over the network and save it for analysis.",
  s:[["Protocol","Modbus TCP"],["Library","Python pyModbus"],["Devices","Wecon HMIs, PLCs"],["Output","Excel"]],
  r:["Wrote Python pyModbus scripts to read machine registers over Modbus TCP","Logged machine data to Excel automatically","Used the data for trend analysis and maintenance planning"],
  o:["Problems spotted earlier from trends","Fewer unplanned breakdowns"]}
 };
-const ORDER=[["dashboard","Plant Machine Telemetry: my own dashboard for 4 machines, with live PLC data, production counts, trends and OEE over MQTT and Modbus TCP.",1],["weigher","5 kg load-cell weigher with coarse / medium / fine feeding on a Samkoon PLC+HMI.",1],["vffs","Servo bag-pulling, PID sealing and weigher dump handshake on vertical form-fill-seal machines.",0],["hffs","6–12 lane horizontal packers with servo/PLC sync within ±2% and live HMI counters.",0],["mtd","12-track filling synchronized on Delta PLCs over Modbus RTU, with tested safety interlocks.",0],["filling","Volumetric filling within ±1%, sensor rejects and servo profiles up to 120 units/min.",0],["mhw","Multi-head weigher commissioning and dump/ready handshake with packing machines.",0],["shrink","Customizing, wiring and commissioning shrink wrappers for end-of-line packing.",0],["panel","Control panels with PLC, HMI, servo and VFD wiring, schematics and safety interlocks.",0],["logging","Python pyModbus scripts logging HMI/PLC data to Excel for trends and maintenance.",0]];
+const ORDER=[["dashboard","Plant Machine Telemetry: my own dashboard for 4 machines, with live PLC data, production counts, trends and OEE over MQTT and Modbus TCP.",1],["weigher","5 kg load-cell weigher with coarse / medium / fine feeding on a Samkoon PLC+HMI.",1],["vffs","Servo bag-pulling, PID sealing and weigher dump handshake on vertical form-fill-seal machines.",0],["hffs","6–12 lane horizontal packers with servo/PLC sync within ±2% and live HMI counters.",0],["mtd","12-track filling synchronized on Delta PLCs over Modbus RTU, with tested safety interlocks.",0],["filling","Volumetric filling within ±1%, sensor rejects and servo profiles up to 120 units/min.",0],["mhw","Multi-head weigher commissioning and dump/ready handshake with packing machines.",0],["shrink","Customizing, wiring and commissioning shrink wrappers for end-of-line packing.",0],["hmi","Delta HMI screens: per-lane recipes and live I/O status pages mapping every sensor to its PLC input and wire ferrule number.",0],["panel","Delta DVP and Omron PLC panels with servo drive, 40 A SSR heater control, relay boards and ferrule-numbered wiring.",0],["logging","Python pyModbus scripts logging HMI/PLC data to Excel for trends and maintenance.",0]];
 const g=document.getElementById('grid');
 ORDER.forEach(([id,d,f],i)=>{const p=P[id];const el=document.createElement('div');el.className='card proj rv'+(f?' feat':'');el.tabIndex=0;el.setAttribute('role','button');el.dataset.p=id;
 el.innerHTML=(p.img?'<div class="thumb"><img loading="lazy" src="'+p.img[0][0]+'" alt="'+p.t+' screenshot" onerror="this.parentNode.remove()"></div>':'')+'<div class="st"><span class="id">ST-'+String(i+1).padStart(2,'0')+'</span><span class="k"><span class="led'+(f?'':' i')+'"></span>'+p.k+'</span></div><h3>'+p.t+'</h3><p>'+d+'</p><span class="more">Open station →</span>';g.appendChild(el)});
