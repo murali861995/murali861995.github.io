@@ -149,6 +149,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .shots{display:grid;gap:12px;margin-top:6px}
 .shots img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
 .shots figcaption{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mute);margin-top:6px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--warn);letter-spacing:.06em;text-transform:uppercase}
+.tbl td{color:var(--mute)}.tbl td b{color:var(--text)}
+.tbl a{font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-decoration:none}
+.tblw{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.note{color:#5c6f81;font-size:12.5px;margin-top:10px;font-family:'IBM Plex Mono',monospace}
 /* reveal */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
 .rv.in{opacity:1;transform:none}
@@ -159,7 +166,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <body>
 <nav><div class="wrap">
 <div class="brand"><i>GM</i>G.MURALI</div>
-<div class="links"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a><span class="pill"><span class="led"></span>OPEN TO WORK</span></div>
+<div class="links"><a href="#projects">Projects</a><a href="#range">Machine range</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a><span class="pill"><span class="led"></span>OPEN TO WORK</span></div>
 </div></nav>
 
 <header id="about"><div class="wrap">
@@ -216,6 +223,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 <section id="projects"><div class="wrap">
 <div class="sh"><div><span class="tag">// MACHINES &amp; SYSTEMS</span><h2>Stations I've built and commissioned</h2></div><p class="sub">Click any station to see what the machine does, the key specs, and exactly what my role was.</p></div>
 <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="range"><div class="wrap">
+<div class="sh"><div><span class="tag">// SMART PAC ENGINEERING · CHENNAI · 2016–2019</span><h2>Machine range I programmed and commissioned</h2></div><p class="sub">Every machine below was built at Smart Pac Engineering. I worked on the PLC/HMI programming, servo setup, wiring and site commissioning. Specs are the manufacturer's published figures.</p></div>
+<div class="tblw rv"><table class="tbl"><thead><tr><th>Machine</th><th>Speed</th><th>Key specs</th><th>Controls</th><th>Maker page</th></tr></thead><tbody><tr><td><b>VFFS SPEG-300-I / 400-I</b><br>Vertical form-fill-seal: centre, 3-side or 4-side seal</td><td>80–100 / 60–80 ppm</td><td>Film 320 / 440 mm · 2.5 / 3 kW · servo or pneumatic pull-down · eye-mark registration</td><td>Delta or Schneider PLC, Schneider touch HMI</td><td><a href="https://smartpacindia.com/vffs_speg_300.php" target="_blank" rel="noopener">View ↗</a></td></tr><tr><td><b>VFFS SPEG-600-I / 800-I</b><br>Large pillow-bag VFFS</td><td>60 / 30 ppm</td><td>Film 650 / 850 mm · 5.5 / 8.5 kW · pneumatic jaws</td><td>Schneider or Delta PLC, Schneider HMI</td><td><a href="https://smartpacindia.com/vffs_speg_600.php" target="_blank" rel="noopener">View ↗</a></td></tr><tr><td><b>Duplex SPD400</b><br>Twin-lane (2-up) VFFS</td><td>Up to 80 ppm</td><td>Pouch 75–200 × 50–170 mm · fill up to 200 g · 6 kW, 3-phase · 6 bar air</td><td>Touch-screen control, servo film pull and sealing</td><td><a href="https://smartpacindia.com/duplex-machine.php" target="_blank" rel="noopener">View ↗</a></td></tr><tr><td><b>Pick-Fill-Seal SPEG-W-700</b><br>Walking-beam premade pouch machine (pillow, gusset, doy with zipper)</td><td>Up to 50 ppm</td><td>Pouch 75–220 mm wide, 130–290 mm high · 415 V</td><td>Schneider PLC + HMI with saved recipes</td><td><a href="http://www.smartpacindia.com/SPEG-W-700.php" target="_blank" rel="noopener">View ↗</a></td></tr><tr><td><b>Flow Wrappers FW300 / FW450</b><br>Horizontal flow wrap, centre / 3-side seal</td><td>120 / 80–100 ppm</td><td>Reel 350 / 500 mm · 3 / 6 kW · servo or induction film pull</td><td>—</td><td><a href="https://smartpacindia.com/horizontal_flow_wrappers.php" target="_blank" rel="noopener">View ↗</a></td></tr><tr><td><b>Jar Line SPEG-JFS-300</b><br>Linear filling + capping for jars and bottles (pickle, ghee, paste)</td><td>—</td><td>Fill 5 g – 1 kg · 6 kg air, 10 CFM · 50 L hopper · single / double / 4-head</td><td>Schneider, Delta or Omron PLC & HMI</td><td><a href="https://smartpacindia.com/speg-jfs-spf.php" target="_blank" rel="noopener">View ↗</a></td></tr></tbody></table></div>
+<p class="note">Specs: smartpacindia.com · ppm = packs per minute</p>
 </div></section>
 
 <section id="experience"><div class="wrap">
@@ -278,11 +291,16 @@ dashboard:{k:"IIoT · Own build",t:"Factory Production Dashboard",img:[["dashboa
  s:[["Protocol","MQTT + Modbus TCP"],["Broker","Mosquitto on plant PC"],["Language","Python"],["Update","Live, every second"]],
  r:["Designed and built the dashboard server that starts automatically when the PC is switched on","Connected machines over MQTT: the weigher HMI publishes live data every second to a Mosquitto broker","Read other machines over Modbus TCP","Built a separate page for each machine with live values","Configured the network and firewall so machines on the plant network can reach the broker"],
  o:["One screen to see machine status on the floor","Foundation for logging production data and spotting problems early"]},
-weigher:{k:"PLC + HMI · Samkoon",t:"3-Speed Semi-Auto Weigher (5 kg)",
- a:"A load-cell based semi-automatic weigher that fills product to a target weight using three feeding speeds.",
- s:[["Controller","Samkoon PLC+HMI combo"],["Capacity","5 kg"],["Feeding","Coarse / Medium / Fine"],["Data","MQTT to dashboard"]],
- r:["Wrote the PLC logic for 3-speed feeding: fast coarse feed, then medium, then fine feed near target","Designed the operator HMI screens: target weight, speed switch points, live weight and settings","Load cell setup and calibration","Connected the weigher to my factory dashboard to publish live weight over MQTT"],
- o:["Accurate fill weight with fast cycle time","Live weight visible on the plant dashboard"]},
+weigher:{k:"PLC + HMI · Samkoon · 2026",t:"3-Speed Semi-Auto Weigher (5 kg)",
+ a:"A 5 kg semi-automatic weigher I designed and programmed end to end in 2026. It fills each bag fast, then slows down near the target and finishes with self-adjusting pulses, so it stays accurate across very different products.",
+ s:[["Controller","Samkoon GT-070-32MT-8TC (PLC + 7\" HMI)"],["Load cell","TDA-08A controller over Modbus RTU"],["Feeding","Fast / Medium / Pulse"],["Recipes","8 products"],["Pulse","Adaptive, 0.3–0.8 s"],["Data","MQTT to plant dashboard"]],
+ r:["Wrote the PLC logic in Samsoar and the HMI in SKTOOL 7.1","Read gross weight and zero commands from the TDA-08A load-cell controller over Modbus RTU","Fast stop at 50% of target, medium stop and pulse start set per product","Adaptive pulse: measures grams per pulse and aims the next pulse at 80% of the remaining weight","Auto overweight correction: if a fill goes over by more than 30 g, the medium stop moves down for the next fill","8 product recipes; special recipe for granules (ground nut) with no slow gate to avoid jamming","Cut cycle time: seal/hold wait 2.6 s → 0.5 s, auto-zero wait 1.5 s → 1.0 s","Communication watchdog and auto-zero step to stop overfills","Publishes live weight every second over MQTT to my factory dashboard"],
+ o:["Accurate fills without manual re-tuning between products","Faster cycle time","Live weight visible on the plant dashboard"]},
+masala:{k:"VFFS · Delta PLC · 2026",t:"Auto Masala VFFS Packing Machine",
+ a:"A vertical form-fill-seal machine for masala powder that I built and programmed recently. It forms the pouch from film, fills a measured dose of powder, seals and cuts it automatically.",
+ s:[["Machine","VFFS pouch packer"],["Product","Masala powder"],["PLC","Delta DVP (WPLSoft)"],["Work","Build, program, commission"]],
+ r:["Programmed the machine sequence in Delta WPLSoft: film pull, filling, vertical and horizontal sealing, cutting","Set up sealing temperature control and the film-pull drive","Designed operator HMI screens for settings, I/O status and alarms","Commissioned and tuned the machine on site"],
+ o:["Automatic pouch packing of masala powder","Screens and photos of this machine coming soon"]},
 vffs:{k:"Packaging",t:"VFFS + Multi-Head Weigher",
  a:"Vertical Form-Fill-Seal machines form a bag from film roll, fill it with product from a multi-head weigher, and seal it.",
  s:[["Bag pulling","Servo synchronized"],["Sealing","PID temperature control"],["Interface","Weigher dump handshake"],["Work","Program + commission"]],
@@ -329,7 +347,7 @@ logging:{k:"Data",t:"Machine Data Logging",
  r:["Wrote Python pyModbus scripts to read machine registers over Modbus TCP","Logged machine data to Excel automatically","Used the data for trend analysis and maintenance planning"],
  o:["Problems spotted earlier from trends","Fewer unplanned breakdowns"]}
 };
-const ORDER=[["dashboard","Plant Machine Telemetry: my own dashboard for 4 machines, with live PLC data, production counts, trends and OEE over MQTT and Modbus TCP.",1],["weigher","5 kg load-cell weigher with coarse / medium / fine feeding on a Samkoon PLC+HMI.",1],["vffs","Servo bag-pulling, PID sealing and weigher dump handshake on vertical form-fill-seal machines.",0],["hffs","6–12 lane horizontal packers with servo/PLC sync within ±2% and live HMI counters.",0],["mtd","12-track filling synchronized on Delta PLCs over Modbus RTU, with tested safety interlocks.",0],["filling","Volumetric filling within ±1%, sensor rejects and servo profiles up to 120 units/min.",0],["mhw","Multi-head weigher commissioning and dump/ready handshake with packing machines.",0],["shrink","Customizing, wiring and commissioning shrink wrappers for end-of-line packing.",0],["hmi","Delta HMI screens: per-lane recipes and live I/O status pages mapping every sensor to its PLC input and wire ferrule number.",0],["panel","Delta DVP and Omron PLC panels with servo drive, 40 A SSR heater control, relay boards and ferrule-numbered wiring.",0],["logging","Python pyModbus scripts logging HMI/PLC data to Excel for trends and maintenance.",0]];
+const ORDER=[["dashboard","Plant Machine Telemetry: my own dashboard for 4 machines, with live PLC data, production counts, trends and OEE over MQTT and Modbus TCP.",1],["weigher","5 kg weigher on Samkoon PLC+HMI with Modbus load cell, 8 recipes and self-adjusting pulse filling.",1],["masala","Recently built VFFS machine for masala powder: Delta PLC sequence, sealing control and HMI screens.",1],["vffs","Servo bag-pulling, PID sealing and weigher dump handshake on vertical form-fill-seal machines.",0],["hffs","6–12 lane horizontal packers with servo/PLC sync within ±2% and live HMI counters.",0],["mtd","12-track filling synchronized on Delta PLCs over Modbus RTU, with tested safety interlocks.",0],["filling","Volumetric filling within ±1%, sensor rejects and servo profiles up to 120 units/min.",0],["mhw","Multi-head weigher commissioning and dump/ready handshake with packing machines.",0],["shrink","Customizing, wiring and commissioning shrink wrappers for end-of-line packing.",0],["hmi","Delta HMI screens: per-lane recipes and live I/O status pages mapping every sensor to its PLC input and wire ferrule number.",0],["panel","Delta DVP and Omron PLC panels with servo drive, 40 A SSR heater control, relay boards and ferrule-numbered wiring.",0],["logging","Python pyModbus scripts logging HMI/PLC data to Excel for trends and maintenance.",0]];
 const g=document.getElementById('grid');
 ORDER.forEach(([id,d,f],i)=>{const p=P[id];const el=document.createElement('div');el.className='card proj rv'+(f?' feat':'');el.tabIndex=0;el.setAttribute('role','button');el.dataset.p=id;
 el.innerHTML=(p.img?'<div class="thumb"><img loading="lazy" src="'+p.img[0][0]+'" alt="'+p.t+' screenshot" onerror="this.parentNode.remove()"></div>':'')+'<div class="st"><span class="id">ST-'+String(i+1).padStart(2,'0')+'</span><span class="k"><span class="led'+(f?'':' i')+'"></span>'+p.k+'</span></div><h3>'+p.t+'</h3><p>'+d+'</p><span class="more">Open station →</span>';g.appendChild(el)});
